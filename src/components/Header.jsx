@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { MDBCollapse, MDBContainer, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler } from 'mdb-react-ui-kit'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Header = () => {
 
@@ -10,12 +10,14 @@ const Header = () => {
 
             <MDBNavbar expand='lg' light bgColor='primary'>
                 <MDBContainer>
-                    <MDBNavbarBrand className='text-white font-weight-bold'>
-                        <span style={{ marginRight: 10 }}>
-                            <MDBIcon fab icon='react' />
-                        </span>
-                       Redux Saga CURD
-                    </MDBNavbarBrand>
+                    <Link to='/'>
+                        <MDBNavbarBrand className='text-white font-weight-bold'>
+                            <span style={{ marginRight: 10 }}>
+                                <MDBIcon fab icon='react' />
+                            </span>
+                            Redux Saga CURD
+                        </MDBNavbarBrand>
+                    </Link>
                     <MDBNavbarToggler data-mdb-toggle="collapse"
                         data-mdb-target="#navbarNav"
                         aria-controls="navbarNav"
