@@ -10,11 +10,11 @@ const Header = () => {
 
             <MDBNavbar expand='lg' light bgColor='primary'>
                 <MDBContainer>
-                    <MDBNavbarBrand className='text-white'>
+                    <MDBNavbarBrand className='text-white font-weight-bold'>
                         <span style={{ marginRight: 10 }}>
                             <MDBIcon fab icon='react' />
                         </span>
-                        contact
+                       Redux Saga CURD
                     </MDBNavbarBrand>
                     <MDBNavbarToggler data-mdb-toggle="collapse"
                         data-mdb-target="#navbarNav"
