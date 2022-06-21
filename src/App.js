@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Footer from './components/Footer'
 import Header from './components/Header'
 import { About, AddEditUser, Home, UserInfo } from './Pages'
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <Route path='/editUser/:id' element={<AddEditUser />} />
           <Route path='/userInfo/:id' element={<UserInfo />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   )

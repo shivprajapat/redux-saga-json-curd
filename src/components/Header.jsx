@@ -8,11 +8,11 @@ const Header = () => {
     return (
         <header>
 
-            <MDBNavbar expand='lg' light bgColor='primary'>
+            <MDBNavbar expand='lg' light bgColor='danger'>
                 <MDBContainer>
                     <Link to='/'>
                         <MDBNavbarBrand className='text-white font-weight-bold'>
-                            <span style={{ marginRight: 10 }}>
+                            <span className='logo'>
                                 <MDBIcon fab icon='react' />
                             </span>
                             Redux Saga CURD
@@ -36,12 +36,12 @@ const Header = () => {
                                 <MDBNavbarLink className='nav-link'>
                                     <NavLink to='/' className='text-white'>Home </NavLink>
                                 </MDBNavbarLink>
-                                </MDBNavbarItem>
+                            </MDBNavbarItem>
                             <MDBNavbarItem>
                                 <MDBNavbarLink className='nav-link'>
                                     <NavLink to='/addUser' className='text-white'>Add User </NavLink>
                                 </MDBNavbarLink>
-                                </MDBNavbarItem>
+                            </MDBNavbarItem>
                             <MDBNavbarItem>
                                 <MDBNavbarLink className='nav-link'>
                                     <NavLink to='/about' className='text-white'>About </NavLink>
