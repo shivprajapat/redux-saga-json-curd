@@ -17,3 +17,5 @@ section {
   align-items: center;
   height: 87%;
 }
+.form-control{border: 1px solid #ddd !important;}
+.form-control::placeholder{color:#a3a0a0 !important;}
