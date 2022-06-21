@@ -11,3 +11,14 @@ export const loadUsersError = (error) => ({
     type: actionTypes.LOAD_USER_ERROR,
     payload: error
 })
+export const createUserStart = (user) => ({
+    type: actionTypes.CREATE_USER_START,
+    payload: user
+})
+export const createUsersSuccess = () => ({
+    type: actionTypes.CREATE_USER_SUCCESS,
+})
+export const createUsersError = (error) => ({
+    type: actionTypes.CREATE_USER_ERROR,
+    payload: error
+})

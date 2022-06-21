@@ -2,6 +2,8 @@ import { MDBBtn, MDBValidation } from 'mdb-react-ui-kit';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import TextInput from '../components/TextInput';
+import { useDispatch } from 'react-redux';
+import { createUserStart } from '../redux/actions';
 
 const initialState = {
   name: "",
@@ -12,10 +14,14 @@ const initialState = {
 const AddEditUser = () => {
   const [formValue, setFormValue] = useState(initialState);
   const { name, email, phone, address } = formValue;
-
+  let dispatch = useDispatch()
   let navigate = useNavigate();
-  const handleSubmit = () => {
-    console.log(formValue);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name && email && phone && address) {
+      dispatch(createUserStart(formValue))
+      setTimeout(() => {navigate.push('/')}, 500);
+    }
   }
   const onInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +37,7 @@ const AddEditUser = () => {
               <p className='fs-2 fw-bold'>Add user Details</p>
               <TextInput type='text' name='name' value={name} onChange={onInputChange} invalid='Please enter a valid name' placeholder='Name' />
               <TextInput type='email' name='email' value={email} onChange={onInputChange} invalid='Please enter a valid email' placeholder='Email' />
-              <TextInput type='phone' name='phone' value={phone} onChange={onInputChange} invalid='Please enter a valid phone' placeholder='Phone' />
+              <TextInput type='phone' name='phone' value={phone} onChange={onInputChange} invalid='Please enter a valid phone' placeholder='Phone' maxLength={10}/>
               <TextInput type='text' name='address' value={address} onChange={onInputChange} invalid='Please enter a valid address' placeholder='Address' />
               <div className="col-12 mt-5">
                 <MDBBtn style={{ marginRight: 10 }} type='submit'>Add</MDBBtn>

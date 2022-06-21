@@ -13,7 +13,7 @@ const Header = () => {
                     <Link to='/'>
                         <MDBNavbarBrand className='text-white font-weight-bold'>
                             <span className='logo'>
-                                <MDBIcon fab icon='react' />
+                                <MDBIcon fab icon='react' size='lg' className='font-weight-bold'/>
                             </span>
                             Redux Saga CURD
                         </MDBNavbarBrand>
