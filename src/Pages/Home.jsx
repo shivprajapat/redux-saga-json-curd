@@ -1,4 +1,4 @@
-import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBTooltip, MDBIcon } from 'mdb-react-ui-kit';
+import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBTooltip, MDBIcon, MDBSpinner } from 'mdb-react-ui-kit';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -7,23 +7,27 @@ import { deleteUserStart, loadUserStart } from '../redux/actions';
 const Home = () => {
 
   let dispatch = useDispatch()
-  const { users } = useSelector((state) => state.data)
+  const { users,loading } = useSelector((state) => state.data)
   console.log('users', users)
   useEffect(() => {
     dispatch(loadUserStart())
     // eslint-disable-next-line 
   }, [])
-
+if(loading){
+  return <MDBSpinner className='spinner' role='status'>
+    <span className='visually-hidden'>Loading.....</span>
+  </MDBSpinner>
+}
 
   const handleDelete = (id) => {
     window.confirm('Are you sure?')
     dispatch(deleteUserStart(id))
-    toast.error('user delete Successfully');
+    toast.success('user delete Successfully');
   }
 
   return (
     <div className='container' style={{ marginTop: 100 }}>
-      <div className="table-responsive">
+      <div className="table-responsive table-hover">
       <MDBTable>
         <MDBTableHead dark>
           <tr>
@@ -73,7 +77,8 @@ const Home = () => {
           }
         </MDBTableBody>
       </MDBTable>
-      </div> </div>
+      </div>
+       </div>
   )
 }
 
