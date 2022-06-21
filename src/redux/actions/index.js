@@ -1,13 +1,13 @@
-import * as types from './actionTypes';
+import {actionTypes} from './actionTypes';
 
 export const loadUserStart = () => ({
-    type: types.LOAD_USER_START
+    type: actionTypes.LOAD_USER_START
 })
 export const loadUsersSuccess = (users) => ({
-    type: types.LOAD_USER_SUCCESS,
+    type: actionTypes.LOAD_USER_SUCCESS,
     payload: users
 })
 export const loadUsersError = (error) => ({
-    type: types.LOAD_USER_ERROR,
+    type: actionTypes.LOAD_USER_ERROR,
     payload: error
 })

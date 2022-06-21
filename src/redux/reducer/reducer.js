@@ -1,4 +1,4 @@
-import * as types from '../actions/actionTypes';
+import {actionTypes} from '../actions/actionTypes';
 
 const initialState = {
     users: [],
@@ -8,18 +8,18 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.LOAD_USER_START:
+        case actionTypes.LOAD_USER_START:
             return {
                 ...state,
                 loading: true
             }
-        case types.LOAD_USER_SUCCESS:
+        case actionTypes.LOAD_USER_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 users: action.payload
             }
-        case types.LOAD_USER_ERROR: 
+        case actionTypes.LOAD_USER_ERROR: 
             return {
                 ...state,
                 loading: false,
