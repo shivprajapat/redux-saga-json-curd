@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import TextInput from '../components/TextInput';
 import { useDispatch } from 'react-redux';
 import { createUserStart } from '../redux/actions';
-
+import { toast } from 'react-toastify';
 const initialState = {
   name: "",
   email: "",
@@ -20,7 +20,8 @@ const AddEditUser = () => {
     e.preventDefault();
     if (name && email && phone && address) {
       dispatch(createUserStart(formValue))
-      setTimeout(() => {navigate.push('/')}, 500);
+      toast.success('user Added Successfully');
+       setTimeout(() => {navigate('/')}, 500);
     }
   }
   const onInputChange = (e) => {
@@ -41,7 +42,7 @@ const AddEditUser = () => {
               <TextInput type='text' name='address' value={address} onChange={onInputChange} invalid='Please enter a valid address' placeholder='Address' />
               <div className="col-12 mt-5">
                 <MDBBtn style={{ marginRight: 10 }} type='submit'>Add</MDBBtn>
-                <MDBBtn onClick={() => navigate.push("/")} color='danger'>Go Back</MDBBtn>
+                <MDBBtn onClick={() => navigate("/")} color='danger'>Go Back</MDBBtn>
               </div>
             </MDBValidation>
           </div>
