@@ -22,3 +22,16 @@ export const createUsersError = (error) => ({
     type: actionTypes.CREATE_USER_ERROR,
     payload: error
 })
+
+export const deleteUserStart = (userId) => ({
+    type: actionTypes.DELETE_USER_START,
+    payload: userId
+})
+export const deleteUsersSuccess = (userId) => ({
+    type: actionTypes.DELETE_USER_SUCCESS,
+    payload: userId
+})
+export const deleteUsersError = (error) => ({
+    type: actionTypes.DELETE_USER_ERROR,
+    payload: error
+})

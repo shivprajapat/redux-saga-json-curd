@@ -1,12 +1,13 @@
 import { actionTypes } from './actions/actionTypes';
 import { take, takeEvery, takeLatest, put, all, delay, fork, call } from 'redux-saga/effects';
-import { loadUsersSuccess, loadUsersError, createUsersSuccess, createUsersError } from './actions';
-import { loadUsersApi, createUsersApi } from './api';
+import { loadUsersSuccess, loadUsersError, createUsersSuccess, createUsersError, deleteUsersError, deleteUsersSuccess } from './actions';
+import { loadUsersApi, createUsersApi, deleteUsersApi } from './api';
 
-export function* onLoadUserStartAsync() {
+// show user
+
+function* onLoadUserStartAsync() {
     try {
         const response = yield call(loadUsersApi);
-        console.log("show the redux saga =>", response.data);
         if (response.status === 200) {
             yield delay(500);
             yield put(loadUsersSuccess(response.data))
@@ -15,11 +16,11 @@ export function* onLoadUserStartAsync() {
         yield put(loadUsersError(error.response.data))
     }
 }
+// create user
 
-export function* onCreateUserStartAsync({ payload }) {
+function* onCreateUserStartAsync({ payload }) {
     try {
         const response = yield call(createUsersApi, payload);
-        console.log("show the redux saga =>", response.data);
         if (response.status === 200) {
             yield delay(500);
             yield put(createUsersSuccess(response.data))
@@ -28,14 +29,33 @@ export function* onCreateUserStartAsync({ payload }) {
         yield put(createUsersError(error.response.data))
     }
 }
-export function* onLoadUsers() {
-    yield takeEvery(actionTypes.LOAD_USER_START, onLoadUserStartAsync)
-}
-export function* onCreateUser() {
-    yield takeLatest(actionTypes.CREATE_USER_START, onCreateUserStartAsync)
+// delete user
+function* onDeleteStartAsync(userId) {
+    try {
+        const response = yield call(deleteUsersApi, userId);
+        if (response.status === 200) {
+            yield delay(500);
+            yield put(deleteUsersSuccess(userId))
+        }
+    } catch (error) {
+        yield put(deleteUsersError(error.response.data))
+    }
 }
 
-const userSagas = [fork(onLoadUsers), fork(onCreateUser)]
+
+function* onLoadUsers() {
+    yield takeEvery(actionTypes.LOAD_USER_START, onLoadUserStartAsync)
+}
+function* onCreateUser() {
+    yield takeLatest(actionTypes.CREATE_USER_START, onCreateUserStartAsync)
+}
+function* onDeleteUser() {
+    while (true) {
+        const { payload: userId } = yield take(actionTypes.DELETE_USER_START)
+        yield call(onDeleteStartAsync, userId)
+    }
+}
+const userSagas = [fork(onLoadUsers), fork(onCreateUser), fork(onDeleteUser)]
 
 export default function* rootSaga() {
     yield all([...userSagas])

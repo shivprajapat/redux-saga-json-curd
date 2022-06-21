@@ -2,7 +2,8 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBTooltip, MDBIcon } fro
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadUserStart } from '../redux/actions';
+import { toast } from 'react-toastify';
+import { deleteUserStart, loadUserStart } from '../redux/actions';
 const Home = () => {
 
   let dispatch = useDispatch()
@@ -15,11 +16,14 @@ const Home = () => {
 
 
   const handleDelete = (id) => {
-    console.log(id);
+    window.confirm('Are you sure?')
+    dispatch(deleteUserStart(id))
+    toast.error('user delete Successfully');
   }
 
   return (
     <div className='container' style={{ marginTop: 100 }}>
+      <div className="table-responsive">
       <MDBTable>
         <MDBTableHead dark>
           <tr>
@@ -69,7 +73,7 @@ const Home = () => {
           }
         </MDBTableBody>
       </MDBTable>
-    </div>
+      </div> </div>
   )
 }
 
