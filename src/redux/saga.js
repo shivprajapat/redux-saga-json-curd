@@ -21,7 +21,7 @@ function* onLoadUserStartAsync() {
 function* onCreateUserStartAsync({ payload }) {
     try {
         const response = yield call(createUsersApi, payload);
-        if (response.status === 200) {
+        if (response.status === 201) {
             yield delay(500);
             yield put(createUsersSuccess(response.data))
         }
