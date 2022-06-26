@@ -8,13 +8,6 @@
       "address": "USA"
     },
     {
-      "name": "om",
-      "email": "om@gmail.com",
-      "phone": "7878787878",
-      "address": "USA",
-      "id": 4
-    },
-    {
       "name": "james",
       "email": "james@gmail.com",
       "phone": "7878787878",
@@ -27,6 +20,13 @@
       "phone": "1234567895",
       "address": "USA",
       "id": 6
+    },
+    {
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "phone": "1234567895",
+      "address": "1234567890",
+      "id": 7
     }
   ]
 }
